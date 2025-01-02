@@ -58,9 +58,10 @@ ________________________________________
 
  Clone the repository
 
-```bash
+```
 git clone https://github.com/your-username/realtime-chat-app.git
 cd realtime-chat-app
+```
 ________________________________________
 Backend Setup
 1.	Create a .env file in the server folder and add the following variables: 
@@ -74,12 +75,12 @@ Backend Setup
 ________________________________________
 Build the Project
 To install all dependencies, build the project, and prepare everything for development or production, simply run:
-npm run build
+```npm run build```
 This will install all the required dependencies for both the frontend and backend, build the project, and set everything up and start frontend.
 ________________________________________
 Install and Run the Application
 From the root of the project, run the following command to start the backend:
-1.	npm run start
+```npm run start```
 This command will build and start  the backend servers .
 ________________________________________
 Usage
