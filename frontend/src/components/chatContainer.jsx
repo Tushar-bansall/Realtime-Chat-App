@@ -36,13 +36,13 @@ const ChatContainer = () => {
     <div className='flex flex-1 flex-col overflow-auto'>
         <ChatHeader />
 
-        <div className='flex-1 flex flex-col overflow-auto' >
+        <div className='flex-1 flex flex-col overflow-x-hidden sm:overflow-auto p-2' >
             {
                 messages.map((message) =>(
                     <div key={message._id} className={`chat ${message.senderid === authUser._id ? "chat-end" : "chat-start"}`}
                         ref={messageEndRef}>                        
                         <div className="chat-image avatar">
-                            <div className="size-10 rounded-full border">
+                            <div className="size-7 md:size-10 rounded-full border">
                                 <img
                                 alt="Profile Picture"
                                 src=
@@ -54,9 +54,9 @@ const ChatContainer = () => {
                         </div>                        
                         <div class=" chat-bubble flex flex-col ">
                             {message.image && 
-                                <img src={message.image} className="sm:max-w-[200px] rounded-md mb-2" />
+                                <img src={message.image} className="max-w-[100px] sm:max-w-[200px] rounded-md mb-2" />
                             }
-                            {message.text && <p>{message.text}</p>}
+                            {message.text && <p className='text-sm md:text-base'>{message.text}</p>}
                             <span class="text-xs opacity-50 flex justify-end">{formatMessageTime(message.createdAt)}</span>                   
                         </div>                       
                     </div>

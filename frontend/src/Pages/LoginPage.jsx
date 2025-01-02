@@ -17,12 +17,12 @@ const LoginPage = () => {
   }
 
   return (
-    <div className=' grid lg:grid-cols-2 '>
+    <div className=' grid md:grid-cols-2 h-[calc(100vh-5rem)]'>
     {/* left side */}
-      <div className='flex flex-col justify-center items-center p-6 sm:p-12'>
+      <div className='flex flex-col justify-center items-center'>
         <div className='w-full max-w-md text-center mb-5 flex flex-col items-center group'>
-          <img src="logo.png" height="140px" width="140px"/>
-          <h1 className='text-2xl font-bold mt-2'> Login</h1>
+          <img src="logo.png" className='w-16 h-16 sm:w-20 sm:h-20'/>
+          <h1 className='text-lg sm:text-2xl font-bold mt-2'> Login</h1>
         </div>
         <form onSubmit={handleSubmit} className='space-y-6 '> 
           <label className="input input-bordered flex items-center gap-2 ">
@@ -58,12 +58,12 @@ const LoginPage = () => {
               setformData({...formData,password:e.target.value})}         
             />
           </label>
-          { !isLoggingIn ? <button type='submit' className="btn btn-md btn-outline btn-success w-full">Login</button>
+          { !isLoggingIn ? <button type='submit' className="btn btn-sm sm:btn-md btn-outline btn-success w-full">Login</button>
               : <button className="btn w-full"><span className="loading loading-spinner"></span>loading</button>}
         </form>
 
         <div className='text-center ' style={{margin: 15}}>
-          <p className='text-base-content/60 text-blue-500'>
+          <p className='text-base-content/60 text-blue-500 text-sm sm:text-base'>
               Create New Account?{" "}
               <Link to="/signup" className="link link-primary text-blue-500"> Sign Up</Link>
           </p>

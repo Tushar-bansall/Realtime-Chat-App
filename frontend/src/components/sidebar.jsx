@@ -18,11 +18,11 @@ const Sidebar = () => {
     if(isUsersLoading) return <SidebarSkeleton />
 
   return (
-    <aside className='h-full w-20 lg:w-72 border-r border-base-300 flex flex-col transition-all duration-200'>
+    <aside className='h-full w-32 sm:w-40 md:w-56 lg:w-72 border-r border-base-300 flex flex-col transition-all duration-200'>
         <div className='border-b border-base-300 w-full p-5'>
             <div className="flex items-center gap-2">
                 <img width="25" height="25" src="https://img.icons8.com/parakeet-line/50/user-group-man-woman.png" alt="user-group-man-woman"/>
-                 <span className="font-medium hidden lg:block">Contacts</span>
+                 <span className="font-medium hidden md:block">Contacts</span>
             </div>   
             <div className='mt-3 hidden lg:flex flex-col items-center gap-2' >
                 <label className='cursor-pointer flex items-center gap-2'>
@@ -42,32 +42,32 @@ const Sidebar = () => {
                 <button
                 key={user._id}
                 onClick={() =>setSelectedUser(user)} 
-                className={`w-full p-3 flex items-center gap-3  hover:bg-base-300 transition-colors
+                className={`w-full p-3 flex items-center md:gap-3  hover:bg-base-300 transition-colors
                 ${selectedUser?._id === user._id ? "bg-base-300 ring-1 ring-base-300" : ""}
                 `}
                 >
-                <div className="relative mx-auto lg:mx-0">
+                <div className="relative mr-1 sm:mr-1.5 sm:ml-1 lg:mx-0">
                     <img
                         src={user.profilePicture || "/user.png"} 
                         alt={user.name}
-                        className="size-12 object-cover rounded-full"
+                        className="size-5 sm:size-7 md:size-10 object-cover rounded-full"
                     />
                     {onlineUsers.includes(user._id) ? 
                         <span
-                            className="absolute bottom-0 right-0 size-3 bg-green-500 rounded-full ring-2 ring-zinc-900"/>
+                            className="absolute bottom-0 right-0 size-1 sm:size-2 md:size-3 bg-green-500 rounded-full ring-2 ring-zinc-900"/>
                         : <span
-                            className="absolute bottom-0 right-0 size-3 bg-red-500 rounded-full ring-2 ring-zinc-900"/>
+                            className="absolute bottom-0 right-0 size-1 sm:size-2 md:size-3  bg-red-500 rounded-full ring-2 ring-zinc-900"/>
                     }
                 </div>
             {/* User info - only visible on larger screens */} 
-                <div className="hidden lg:block text-left min-w-0"> 
-                    <div className="font-medium truncate">{user.fullName}</div>
+                <div className="inline-block "> 
+                    <div className="text-xs font-thin sm:font-extralight mg:font-medium ">{user.fullName}</div>
                     {onlineUsers.includes(user._id) ? 
-                        <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
+                        <span class="hidden md:inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-0.5 md:px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
                             <span class="w-2 h-2 me-1 bg-green-500 rounded-full"></span>
                             Online
                         </span> : 
-                        <span class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+                        <span class="hidden md:inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-0.5 md:px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
                             <span class="w-2 h-2 me-1 bg-red-500 rounded-full"></span>
                             Offline
                         </span>
