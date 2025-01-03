@@ -35,6 +35,7 @@ ________________________________________
   - React.js for building the user interface.
   - Socket.io for real-time messaging.
   - TailwindCSS for responsive and modern design.
+  - Zustand for managing global states
 
 - Backend:
   - Node.js with Express.js for the API server.
@@ -104,6 +105,8 @@ Screenshots
 4. Settings Page
 •	Change the theme of the application
  
+
+ Live demo : https://realtime-chat-app-czmt.onrender.com
 
 ________________________________________
 Contributing

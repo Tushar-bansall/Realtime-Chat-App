@@ -26,7 +26,7 @@ const Sidebar = () => {
                 <img width="25" height="25" src="https://img.icons8.com/parakeet-line/50/user-group-man-woman.png" alt="user-group-man-woman"/>
                  <span className="font-medium hidden md:block">Contacts</span>
             </div>   
-            <div className='mt-3 hidden lg:flex flex-col items-center gap-2' >
+            <div className='mt-3 hidden lg:flex flex-col items-center' >
                 <label className='cursor-pointer flex items-center gap-2'>
                     <input 
                     type="checkbox" 
@@ -34,7 +34,7 @@ const Sidebar = () => {
                     onChange={(e)=> setShowOnlineOnly(e.target.checked)} 
                     className='checkbox checkbox-sm'
                     />
-                    <span className='text-sm'>Show online users only</span>
+                    <span className='text-xs'>Show online users only</span>
                 </label>
                 <span className='text-xs text-zinc-500'>({onlineUsers.length-1} online)</span>
             </div>

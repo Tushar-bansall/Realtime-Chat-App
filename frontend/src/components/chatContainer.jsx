@@ -56,7 +56,7 @@ const ChatContainer = () => {
                             {message.image && 
                                 <img src={message.image} className="max-w-[100px] sm:max-w-[200px] rounded-md mb-2" />
                             }
-                            {message.text && <p className='text-sm md:text-base'>{message.text}</p>}
+                            {message.text && <p className='text-sm md:text-base max-w-[calc(30vw)] break-words'>{message.text}</p>}
                             <span class="text-xs opacity-50 flex justify-end">{formatMessageTime(message.createdAt)}</span>                   
                         </div>                       
                     </div>
