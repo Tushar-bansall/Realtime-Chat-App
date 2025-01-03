@@ -18,7 +18,9 @@ const Sidebar = () => {
     if(isUsersLoading) return <SidebarSkeleton />
 
   return (
-    <aside className='h-full w-32 sm:w-40 md:w-56 lg:w-72 border-r border-base-300 flex flex-col transition-all duration-200'>
+    <aside className={`h-full w-32 sm:w-40 md:w-56 lg:w-72 flex flex-col border-r border-base-300 transition-all duration-200
+     ${selectedUser ? "hidden sm:flex" : "" } 
+    `}>
         <div className='border-b border-base-300 w-full p-5'>
             <div className="flex items-center gap-2">
                 <img width="25" height="25" src="https://img.icons8.com/parakeet-line/50/user-group-man-woman.png" alt="user-group-man-woman"/>
@@ -50,7 +52,9 @@ const Sidebar = () => {
                     <img
                         src={user.profilePicture || "/user.png"} 
                         alt={user.name}
-                        className="size-5 sm:size-7 md:size-10 object-cover rounded-full"
+                        className={`size-5 sm:size-7 md:size-10 object-cover rounded-full
+                        ${selectedUser?._id === user._id && "border-4 border-green-500"}
+                        `}
                     />
                     {onlineUsers.includes(user._id) ? 
                         <span
