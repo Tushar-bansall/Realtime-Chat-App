@@ -17,12 +17,12 @@ const LoginPage = () => {
   }
 
   return (
-    <div className=' grid md:grid-cols-2 h-[calc(100vh-10rem)] sm:h-[calc(100vh-5rem)]'>
+    <div className=' grid md:grid-cols-2  h-[calc(100vh-10rem)] sm:h-[calc(100vh-5rem)]'>
     {/* left side */}
-      <div className='flex flex-col justify-center items-center'>
+      <div className='flex flex-col bg-[url("https://png.pngtree.com/thumb_back/fh260/background/20220206/pngtree-emoji-of-social-media-or-chat-application-network-emoticon-background-image_985694.jpg")] bg-cover md:bg-none justify-center items-center'>
         <div className='w-full max-w-md text-center mb-5 flex flex-col items-center group'>
           <img src="logo.png" className='w-16 h-16 sm:w-20 sm:h-20'/>
-          <h1 className='text-lg sm:text-2xl font-bold mt-2'> Login</h1>
+          <h1 className='text-lg sm:text-2xl font-bold mt-2 text-orange-700 md:text-orange-300'> Login</h1>
         </div>
         <form onSubmit={handleSubmit} className='space-y-6 '> 
           <label className="input input-bordered flex items-center gap-2 ">
@@ -58,14 +58,14 @@ const LoginPage = () => {
               setformData({...formData,password:e.target.value})}         
             />
           </label>
-          { !isLoggingIn ? <button type='submit' className="btn btn-sm sm:btn-md btn-outline btn-success w-full">Login</button>
+          { !isLoggingIn ? <button type='submit' className="btn btn-sm sm:btn-md btn-outline btn-success text-base w-full">Login</button>
               : <button className="btn w-full"><span className="loading loading-spinner"></span>loading</button>}
         </form>
 
         <div className='text-center ' style={{margin: 15}}>
-          <p className='text-base-content/60 text-blue-500 text-sm sm:text-base'>
+          <p className='text-base-content/60 text-blue-800 md:text-blue-500 text-sm sm:text-base'>
               Create New Account?{" "}
-              <Link to="/signup" className="link link-primary text-blue-500"> Sign Up</Link>
+              <Link to="/signup" className="link link-primary text-blue-800 md:text-blue-500"> Sign Up</Link>
           </p>
 
         </div>

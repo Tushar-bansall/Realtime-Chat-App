@@ -33,7 +33,7 @@ const ChatContainer = () => {
     )}
 
   return (
-    <div className='flex flex-1 flex-col overflow-auto'>
+    <div className='flex flex-1 flex-col overflow-auto bg-[url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png)] bg-cover'>
         <ChatHeader />
 
         <div className='flex-1 flex flex-col overflow-x-hidden sm:overflow-auto p-2' >
@@ -42,13 +42,13 @@ const ChatContainer = () => {
                     <div key={message._id} className={`chat ${message.senderid === authUser._id ? "chat-end" : "chat-start"}`}
                         ref={messageEndRef}>                        
                         <div className="chat-image avatar">
-                            <div className="size-7 md:size-10 rounded-full border">
+                            <div className="size-7 md:size-10 rounded-full border border-black">
                                 <img
                                 alt="Profile Picture"
                                 src=
                                 { message.senderid === authUser._id 
-                                ? authUser.profilePicture || "user.png"
-                                : selectedUser.profilePicture || "user.png"
+                                ? authUser.profilePicture || "https://img.icons8.com/ios/50/user-male-circle--v1.png"
+                                : selectedUser.profilePicture || "https://img.icons8.com/ios/50/user-male-circle--v1.png"
                                 } />
                             </div>
                         </div>                        

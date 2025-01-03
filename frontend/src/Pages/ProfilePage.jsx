@@ -21,12 +21,13 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className=' text-center bg-slate-600 w-80 max-w-2xl mx-auto  mt-2 '>
+    <div className='p-4 bg-[url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuJAmi3fHHjog92eHrAEgbL6Y_qe7J_bJdxg&s)] bg-cover '>
+    <div className=' text-center bg-slate-300 w-80 max-w-2xl mx-auto'>
       <div>
-        <h2 className="pt-4 text-lg md:text-2xl font-semibold text-white">Profile</h2>
-        <p className="text-white-300 text-sm md:text-lg mt-2">Your Profile Information</p>
+        <h2 className="pt-2 text-lg md:text-2xl font-bold text-white">Profile</h2>
+        <p className="text-white-300 text-sm font-semibold md:text-lg mt-1">Your Profile Information</p>
       </div>
-      <div className="text-center mb-8 mt-4">
+      <div className="text-center mb-4 mt-2">
         <div className="relative inline-block">
          { 
             !isUpdatingProfile ?
@@ -54,20 +55,21 @@ const ProfilePage = () => {
             
           }
         </div>
-        <h2 className="mt-4 text-lg md:text-xl font-semibold text-white">{authUser.fullName}</h2>
-        <p className="text-white-300 text-sm md:text-base">{authUser.email}</p>
+        <h2 className="mt-4 text-lg md:text-xl font-bold text-white">{authUser.fullName}</h2>
+        <p className="text-white-300 text-sm font-medium md:text-base">{authUser.email}</p>
       </div>
-      <div className="bg-gray-700 p-4 w-80 rounded-lg">
+      <div className="bg-gray-500 p-4 w-80 rounded-lg">
         <h3 className="text-base md:text-lg font-semibold text-white">Account Information</h3>
-        <div className="flex justify-between mt-3 text-sm md:text-base">
+        <div className="flex justify-between mt-3 text-sm font-normal md:text-base">
           <span className="text-white-500 ">Member Since:</span>
           <span className="text-white-200">{authUser.createdAt?.split("T")[0]}</span>
         </div>
-        <div className="flex justify-between mt-2 text-sm md:text-base">
+        <div className="flex justify-between mt-2 text-sm font-normal md:text-base">
           <span className="text-white-500">Account Status:</span>
           <span className="text-green-400 font-bold">Active</span>
         </div>
       </div>
+    </div>
     </div>
   )
 }

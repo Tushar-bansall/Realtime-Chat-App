@@ -7,7 +7,7 @@ const navbarbutton = () => {
   const currentURL = location.pathname; // Get the current path
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 bg-transparent">
       {currentURL === '/settings' ? (
         // If the current URL is /settings, show the Login button
         <Link to="/login" className="btn btn-xs sm:btn-sm md:btn-md btn-info">

@@ -2,11 +2,11 @@ import React from 'react';
 
 const NoChatSelected = () => {
   return (
-    <div className="w-full flex flex-col items-center justify-center p-16 bg-base-100/50">
+    <div className="w-full flex flex-col items-center justify-center bg-[url(https://www.shutterstock.com/image-vector/social-media-sketch-vector-seamless-600nw-1660950727.jpg)] bg-cover p-16 bg-base-100/50">
       <div className="max-w-md text-center space-y-6">
         <div className="flex justify-center gap-4 mb-4">
           <div className="relative">
-            <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center animate-bounce">
+            <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center animate-bounce">
               <img 
                 src="logo.png" 
                 alt="MT Chat Logo" 
@@ -15,8 +15,8 @@ const NoChatSelected = () => {
             </div>
           </div>
         </div>
-        <h2 className="text-2xl font-bold">Welcome to MT😉Chat</h2>
-        <p className="text-base text-opacity-60">
+        <h2 className="text-2xl font-bold text-orange-700 bg-base-100/20">Welcome to MT😉Chat</h2>
+        <p className="text-md font-semibold  text-orange-700 bg-base-100/20">
           Select a user to start chatting
         </p>
       </div>

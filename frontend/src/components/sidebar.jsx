@@ -18,13 +18,13 @@ const Sidebar = () => {
     if(isUsersLoading) return <SidebarSkeleton />
 
   return (
-    <aside className={`h-full w-32 sm:w-40 md:w-56 lg:w-72 flex flex-col border-r border-base-300 transition-all duration-200
+    <aside className={`h-full bg-[url(https://wallpapersok.com/images/thumbnail/cute-and-pink-baby-cartoon-cat-background-6t7ls4cahf0desw5.webp)] bg-cover w-32 sm:w-40 md:w-56 lg:w-72 flex flex-col border-r border-base-300 transition-all duration-200
      ${selectedUser ? "hidden sm:flex" : "" } 
     `}>
         <div className='border-b border-base-300 w-full p-5'>
             <div className="flex items-center gap-2">
                 <img width="25" height="25" src="https://img.icons8.com/parakeet-line/50/user-group-man-woman.png" alt="user-group-man-woman"/>
-                 <span className="font-medium hidden md:block">Contacts</span>
+                 <span className=" font-semibold hidden md:block">Contacts</span>
             </div>   
             <div className='mt-3 hidden lg:flex flex-col items-center' >
                 <label className='cursor-pointer flex items-center gap-2'>
@@ -34,9 +34,9 @@ const Sidebar = () => {
                     onChange={(e)=> setShowOnlineOnly(e.target.checked)} 
                     className='checkbox checkbox-sm'
                     />
-                    <span className='text-xs'>Show online users only</span>
+                    <span className='text-sm font-normal'>Show online users only</span>
                 </label>
-                <span className='text-xs text-zinc-500'>({onlineUsers.length-1} online)</span>
+                <span className='text-xs font-light text-zinc-500'>({onlineUsers.length-1} online)</span>
             </div>
         </div>
         <div className="overflow-y-auto w-full py-3">
@@ -44,17 +44,15 @@ const Sidebar = () => {
                 <button
                 key={user._id}
                 onClick={() =>setSelectedUser(user)} 
-                className={`w-full p-3 flex items-center md:gap-3  hover:bg-base-300 transition-colors
-                ${selectedUser?._id === user._id ? "bg-base-300 ring-1 ring-base-300" : ""}
+                className={`w-full p-3 flex items-center md:gap-3  hover:bg-slate-50 transition-colors
+                ${selectedUser?._id === user._id ? " bg-green-500 text-black hover:text-orange-300 ring-1 ring-base-300" : ""}
                 `}
                 >
                 <div className="relative mr-1 sm:mr-1.5 sm:ml-1 lg:mx-0">
                     <img
-                        src={user.profilePicture || "/user.png"} 
+                        src={user.profilePicture || "https://img.icons8.com/ios/50/user-male-circle--v1.png"} 
                         alt={user.name}
-                        className={`size-5 sm:size-7 md:size-10 object-cover rounded-full
-                        ${selectedUser?._id === user._id && "border-4 border-green-500"}
-                        `}
+                        className={`size-5 sm:size-7 md:size-10 object-cover rounded-full`}
                     />
                     {onlineUsers.includes(user._id) ? 
                         <span
@@ -65,7 +63,7 @@ const Sidebar = () => {
                 </div>
             {/* User info - only visible on larger screens */} 
                 <div className="inline-block "> 
-                    <div className="text-xs font-thin sm:font-extralight mg:font-medium ">{user.fullName}</div>
+                    <div className="text-xs font-thin sm:text-sm sm:font-extralight md:text-base md:font-medium ">{user.fullName}</div>
                     {onlineUsers.includes(user._id) ? 
                         <span class="hidden md:inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-0.5 md:px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
                             <span class="w-2 h-2 me-1 bg-green-500 rounded-full"></span>

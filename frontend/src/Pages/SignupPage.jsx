@@ -33,10 +33,10 @@ const SignupPage = () => {
   return (
     <div className=' grid md:grid-cols-2 h-[calc(100vh-10rem)] sm:h-[calc(100vh-5rem)]'>
     {/* left side */}
-      <div className='flex flex-col justify-center items-center'>
+      <div className='flex flex-col bg-[url("https://png.pngtree.com/thumb_back/fh260/background/20220206/pngtree-emoji-of-social-media-or-chat-application-network-emoticon-background-image_985694.jpg")] bg-cover md:bg-none justify-center items-center'>
         <div className='w-full max-w-md text-center mb-3 flex flex-col items-center group'>
           <img src="logo.png" className='w-16 h-16 sm:w-20 sm:h-20'/>
-          <h1 className='text-lg sm:text-2xl font-bold mt-2'> Create Account</h1>
+          <h1 className='text-lg sm:text-2xl font-bold mt-2 text-orange-700 md:text-orange-300'> Create Account</h1>
         </div>
       <form onSubmit={handleSubmit} className='space-y-6 '> 
 
@@ -88,14 +88,14 @@ const SignupPage = () => {
             setformData({...formData,password:e.target.value})}         
           />
         </label>
-        { !isSigningUp ? <button type='submit' className="btn btn-sm sm:btn-md btn-outline btn-success w-full" >SignUp</button>
+        { !isSigningUp ? <button type='submit' className="btn btn-sm sm:btn-md btn-outline btn-success w-full text-base" >SignUp</button>
             : <button className="btn w-full"><span className="loading loading-spinner"></span>loading</button>}
       </form>
 
       <div className='text-center ' style={{margin: 15}}>
-        <p className='text-sm sm:text-base-content/60 text-blue-500'>
+        <p className='text-sm text-base-content/60 sm:text-base text-blue-800 md:text-blue-500'>
             Already Have an Account?{" "}
-            <Link to="/login" className="link link-primary text-blue-500"> Sign In</Link>
+            <Link to="/login" className="link link-primary text-blue-800 md:text-blue-500"> Sign In</Link>
         </p>
 
       </div>
