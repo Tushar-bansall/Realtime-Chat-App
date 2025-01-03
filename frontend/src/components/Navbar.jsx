@@ -107,12 +107,11 @@ const Navbar = () => {
             {authUser ?
               <div className="dropdown dropdown-end">
                 
-                <div tabIndex={0} role="button" className="btn btn-sm md:btn-md btn-circle avatar btn-ghost">
-                  <div className="w-12 h-12 rounded-full">
+                <div tabIndex={0} role="button" className="btn btn-xs sm:btn-sm md:btn-md btn-circle avatar btn-ghost">
+                  <div className=" rounded-full">
                     <img
                       alt="Tailwind CSS Navbar component"
                       src={authUser.profilePicture || "user.png"}
-                      className="w-full h-full object-cover"
                       />
                   </div>
                 </div>
