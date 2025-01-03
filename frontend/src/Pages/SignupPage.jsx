@@ -31,7 +31,7 @@ const SignupPage = () => {
   }
 
   return (
-    <div className=' grid md:grid-cols-2 h-[calc(100vh-5rem)]'>
+    <div className=' grid md:grid-cols-2 h-[calc(100vh-10rem)] sm:h-[calc(100vh-5rem)]'>
     {/* left side */}
       <div className='flex flex-col justify-center items-center'>
         <div className='w-full max-w-md text-center mb-3 flex flex-col items-center group'>
