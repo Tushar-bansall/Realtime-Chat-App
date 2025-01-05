@@ -18,6 +18,10 @@ const msgSchema = new mongoose.Schema(
         image : {
             type : String,
         },
+        reactions : {
+            type: Map, 
+            of: String 
+        }
     },
     {
         timestamps : true

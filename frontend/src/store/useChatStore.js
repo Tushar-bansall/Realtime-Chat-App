@@ -68,5 +68,18 @@ export const useChatStore = create((set,get) => ({
         const socket = useAuthStore.getState().socket
         socket.off("newMessage")
     },
+    sendReaction : async (data) => {
+        try {
+            const res = await axiosInstance.put('api/messages/messageReact',data)
+            const {messages}= get()
+            const newmessages = messages.map((message)=>{
+                return message._id === res.data.message_id ? res.data : message
+                }) 
+            set({messages : newmessages})
+        } catch (error) {
+            console.log("Error in sendReaction",error)
+        }
+        
+    },
     setSelectedUser : (selectedUser) => set({selectedUser})
 }))

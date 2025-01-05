@@ -24,7 +24,7 @@ const Sidebar = () => {
         <div className='border-b border-base-300 w-full p-5'>
             <div className="flex items-center gap-2">
                 <img width="25" height="25" src="https://img.icons8.com/parakeet-line/50/user-group-man-woman.png" alt="user-group-man-woman"/>
-                 <span className=" font-semibold hidden md:block">Contacts</span>
+                 <span className=" font-semibold hidden md:block">Friends</span>
             </div>   
             <div className='mt-3 hidden lg:flex flex-col items-center' >
                 <label className='cursor-pointer flex items-center gap-2'>
@@ -32,11 +32,11 @@ const Sidebar = () => {
                     type="checkbox" 
                     checked={showOnlineOnly} 
                     onChange={(e)=> setShowOnlineOnly(e.target.checked)} 
-                    className='checkbox checkbox-sm'
+                    className='checkbox checkbox-xs sm:checkbox-sm checkbox-error border-3'
                     />
-                    <span className='text-sm font-normal'>Show online users only</span>
+                    <span className='text-xs sm:text-sm font-normal sm:font-medium'>Show online users only</span>
                 </label>
-                <span className='text-xs font-light text-zinc-500'>({onlineUsers.length-1} online)</span>
+                <span className='text-xs sm:text-sm sm:font-normal font-light text-zinc-500'>({onlineUsers.length>0 ? onlineUsers.length-1 : 0} online)</span>
             </div>
         </div>
         <div className="overflow-y-auto w-full py-3">

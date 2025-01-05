@@ -24,7 +24,7 @@ const LoginPage = () => {
           <img src="logo.png" className='w-16 h-16 sm:w-20 sm:h-20'/>
           <h1 className='text-lg sm:text-2xl font-bold mt-2 text-orange-700 md:text-orange-300'> Login</h1>
         </div>
-        <form onSubmit={handleSubmit} className='space-y-6 '> 
+        <form onSubmit={handleSubmit} className='space-y-6 w-[calc(100vw-5rem)] md:w-80 '> 
           <label className="input input-bordered flex items-center gap-2 ">
             <span className='label-text font-medium text-yellow-300'>Email</span>
             <svg

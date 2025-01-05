@@ -61,7 +61,8 @@ export const sendMessage = async (req,res) => {
 
         //realtime functionality using socket.io
         const receiverSocketId = getReceiverSocketId(receiverid)
-        io.to(receiverSocketId).emit("newMessage", msg)
+        if(receiverSocketId)
+            io.to(receiverSocketId).emit("newMessage", msg)
 
         res.status(201).json(msg);
 
@@ -70,4 +71,21 @@ export const sendMessage = async (req,res) => {
         res.status(500).json({ message: "Internal Server Error "})
     }
     
+}
+
+export const messageReact = async (req,res) => {
+    try {
+        const {message_id,reaction} = req.body
+        const reactionbyusername = req.user.fullName
+        const updatedMessage = await Message.findOneAndUpdate(
+            { _id: message_id },
+            { $set: { [`reactions.${reactionbyusername}`]: reaction } },
+            { new: true } // This returns the updated document
+          );
+          
+        res.status(201).json(updatedMessage)
+    } catch (error) {
+        console.log("Error in messageReact " , error.message)
+        res.status(500).json({ message: "Internal Server Error"})
+    }
 }

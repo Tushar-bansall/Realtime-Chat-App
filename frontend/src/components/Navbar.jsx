@@ -28,7 +28,7 @@ const navbarbutton = () => {
         </Link>
       ) : (
         // Otherwise, show the Settings button
-        <Link to="/settings" className="btn btn-sm md:btn-md gap-1 md:gap-2 transition-colors">
+        <Link to="/settings" className="btn btn-xs sm:btn-sm md:btn-md sm:gap-2 transition-colors">
           <svg
             fill="#ffffff"
             className="h-4 w-4 md:h-5 md:w-5"
@@ -63,7 +63,7 @@ const Navbar = () => {
           <Link to="/" className="btn btn-ghost btn-xs sm:btn-sm md:btn-md text-sm sm:text-base md:text-xl">MT😉Chat</Link>
         </div>
         {authUser && 
-          <button className="btn btn-xs sm:btn-md md:btn-lg btn-ghost btn-circle">
+          <button className="btn btn-xs sm:btn-md btn-ghost btn-circle">
             <div className="indicator">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +77,7 @@ const Navbar = () => {
                   strokeWidth="2"
                   d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
               </svg>
-              <span className="badge badge-xs badge-primary indicator-item"></span>
+              <span className="badge badge-xs indicator-item badge-info">3</span>
             </div>
           </button>}
         <div className="flex-none gap-2">
