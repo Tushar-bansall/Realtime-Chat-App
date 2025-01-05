@@ -72,10 +72,10 @@ const ChatContainer = () => {
                             {clickedmsgid === message._id && <div className="chat-header ">
                                 <div className="w-fit bg-base-100/20 rounded-badge">
                                 
-                                    <button className="btn btn-sm btn-circle btn-ghost" value='❤️️' onClick={(e) => {setclickedmsgid(null);sendReaction({message_id : currmsg._id,reaction: e.target.value})}}>❤️️</button>
-                                    <button className="btn btn-sm btn-circle btn-ghost" value='👍' onClick={(e) => {setclickedmsgid(null);sendReaction({message_id : currmsg._id,reaction: e.target.value})}}>👍</button>
-                                    <button className="btn btn-sm btn-circle btn-ghost" value='🤣' onClick={(e) => {setclickedmsgid(null);sendReaction({message_id : currmsg._id,reaction: e.target.value})}}>🤣</button>
-                                    <button className="btn btn-sm btn-circle btn-ghost" value='😢' onClick={(e) => {setclickedmsgid(null);sendReaction({message_id : currmsg._id,reaction: e.target.value})}}>😢</button>                              
+                                    <button className="btn btn-sm btn-circle btn-ghost" value='❤️️' onClick={(e) => {setclickedmsgid(null);sendReaction({message_id : message._id,reaction: e.target.value})}}>❤️️</button>
+                                    <button className="btn btn-sm btn-circle btn-ghost" value='👍' onClick={(e) => {setclickedmsgid(null);sendReaction({message_id : message._id,reaction: e.target.value})}}>👍</button>
+                                    <button className="btn btn-sm btn-circle btn-ghost" value='🤣' onClick={(e) => {setclickedmsgid(null);sendReaction({message_id : message._id,reaction: e.target.value})}}>🤣</button>
+                                    <button className="btn btn-sm btn-circle btn-ghost" value='😢' onClick={(e) => {setclickedmsgid(null);sendReaction({message_id : message._id,reaction: e.target.value})}}>😢</button>                              
                                 </div>
                             </div> }
                         {message.reactions &&
