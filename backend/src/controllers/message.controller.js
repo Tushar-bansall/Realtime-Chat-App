@@ -83,9 +83,39 @@ export const messageReact = async (req,res) => {
             { new: true } // This returns the updated document
           );
           
+        const receiverSocketId = getReceiverSocketId(updatedMessage.receiverid)
+        const senderSocketId = getReceiverSocketId(updatedMessage.senderid)
+
+        // Emit the reaction to the receiver
+        if (receiverSocketId) {
+            io.to(receiverSocketId).emit("newReaction", updatedMessage);
+        }
+
+        // Emit the reaction to the sender
+        if (senderSocketId) {
+            io.to(senderSocketId).emit("newReaction", updatedMessage);
+        }
+
+
         res.status(201).json(updatedMessage)
     } catch (error) {
         console.log("Error in messageReact " , error.message)
         res.status(500).json({ message: "Internal Server Error"})
     }
 }
+
+export const getFriends = async (req,res) => {
+        try {
+    
+            // Query the User collection for friends
+            const user = await User.findById(req.params.id).populate('friends');
+            // Send back the users
+            res.status(200).json(user.friends);
+    
+        } catch (error) {
+            // Log the error and send a 500 server error response
+            console.log("Error in getFriends:", error.message);
+            res.status(500).json({ message: "Internal Server Error" });
+        }
+    };
+    

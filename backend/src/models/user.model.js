@@ -10,7 +10,8 @@ const userSchema= new mongoose.Schema(
         email: {
             type: String,
             required : true,
-            unique: true
+            unique: true,
+            match: [/\S+@\S+\.\S+/, 'Please use a valid email address']
         },
         password: {
             type: String,
@@ -21,7 +22,11 @@ const userSchema= new mongoose.Schema(
         profilePicture: {
             type: String,
             default : ""
-        }
+        },
+        friends: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }]
     },
     {
         timestamps: true,

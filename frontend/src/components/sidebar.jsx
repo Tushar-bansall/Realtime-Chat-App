@@ -4,17 +4,16 @@ import SidebarSkeleton from './Skeletons/SidebarSkeleton'
 import { useAuthStore } from '../store/useAuthStore'
 
 const Sidebar = () => {
-    const {getUsers, users, selectedUser, setSelectedUser, isUsersLoading}= useChatStore()
+    const {friends,getFriends, selectedUser, setSelectedUser, isUsersLoading}= useChatStore()
 
     const {onlineUsers} = useAuthStore()
     const [showOnlineOnly, setShowOnlineOnly] = React.useState(false)
 
     useEffect(()=>{
-        getUsers()
-    },[getUsers])
-
-    const filteredUsers = showOnlineOnly ? users.filter(user => onlineUsers.includes(user._id)) : users
-
+        getFriends()
+    },[getFriends,friends])
+    const filteredUsers = showOnlineOnly ? friends.filter(user => onlineUsers.includes(user._id)) : friends
+    
     if(isUsersLoading) return <SidebarSkeleton />
 
   return (

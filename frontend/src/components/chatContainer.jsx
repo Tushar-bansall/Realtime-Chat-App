@@ -10,16 +10,17 @@ import { formatMessageTime } from '../lib/utils'
 const ChatContainer = () => {
     
     const [clickedmsgid,setclickedmsgid] = React.useState(null)
-    const {selectedUser, isMessagesLoading, messages, getMessages,subscribeToMessages,unsubscribeFromMessages,sendReaction} = useChatStore()
+    const {selectedUser, isMessagesLoading, messages, getMessages,subscribeToMessages,unsubscribeFromMessages,sendReaction,subscribeToReactions,unsubscribeFromReactions} = useChatStore()
     const {authUser} = useAuthStore()
     const messageEndRef = useRef(null)
 
     useEffect(()=>{
         getMessages(selectedUser._id);
         subscribeToMessages()
+        subscribeToReactions()
 
-        return () => unsubscribeFromMessages()
-    },[selectedUser._id,getMessages,subscribeToMessages,unsubscribeFromMessages])
+        return () => {unsubscribeFromReactions();unsubscribeFromMessages()}
+    },[selectedUser._id,getMessages,subscribeToMessages,unsubscribeFromMessages,subscribeToReactions,unsubscribeFromReactions])
 
     useEffect(()=>{
         if(messageEndRef.current && messages)

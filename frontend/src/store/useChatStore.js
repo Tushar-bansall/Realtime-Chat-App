@@ -6,6 +6,7 @@ import { useAuthStore } from "./useAuthStore";
 export const useChatStore = create((set,get) => ({
     messages: [],
     users: [],
+    friends: [],
     selectedUser: null,
     isUsersLoading: false,
     isMessagesLoading: false,
@@ -68,6 +69,21 @@ export const useChatStore = create((set,get) => ({
         const socket = useAuthStore.getState().socket
         socket.off("newMessage")
     },
+    subscribeToReactions: () => {
+        const socket = useAuthStore.getState().socket
+
+        socket.on("newReaction",(newMessage,reacter) => {
+              const {messages}= get()
+              const newmessages = messages.map((message)=>{
+                  return message._id === newMessage._id ? newMessage : message
+                  }) 
+              set({messages : newmessages})
+        });
+    },
+    unsubscribeFromReactions: () => {
+        const socket = useAuthStore.getState().socket
+        socket.off("newReaction")
+    },
     sendReaction : async (data) => {
         try {
             const res = await axiosInstance.put('api/messages/messageReact',data)
@@ -80,6 +96,18 @@ export const useChatStore = create((set,get) => ({
             console.log("Error in sendReaction",error)
         }
         
+    },
+    getFriends : async () => {
+        set({isUsersLoading:true})
+        try {
+            const {authUser} = useAuthStore()
+            const res= await axiosInstance.get(`api/messages/${authUser._id}/friends`)
+            set({ friends: res.data });
+        } catch (error) {
+            toast.error(error.response.data.message)
+        } finally {
+            set({isUsersLoading:false})
+        }
     },
     setSelectedUser : (selectedUser) => set({selectedUser})
 }))
