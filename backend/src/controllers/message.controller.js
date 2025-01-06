@@ -108,7 +108,7 @@ export const getFriends = async (req,res) => {
         try {
     
             // Query the User collection for friends
-            const user = await User.findById(req.params.id).populate('friends');
+            const user = await User.findById(req.user._id).populate('friends');
             // Send back the users
             res.status(200).json(user.friends);
     

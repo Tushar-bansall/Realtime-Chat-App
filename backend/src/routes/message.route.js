@@ -8,6 +8,6 @@ router.get("/users",protectRoute, getUsers)
 router.get("/:id",protectRoute,getMessages)
 router.post("/send/:id",protectRoute,sendMessage)
 router.put("/messageReact",protectRoute,messageReact)
-router.get("/:id/friends",getFriends)
+router.get("/friends",protectRoute,getFriends)
 
 export default router

@@ -10,6 +10,7 @@ export const useChatStore = create((set,get) => ({
     selectedUser: null,
     isUsersLoading: false,
     isMessagesLoading: false,
+    showProfile:false,
 
     getUsers: async() => {
         set({isUsersLoading:true})
@@ -109,5 +110,6 @@ export const useChatStore = create((set,get) => ({
             set({isUsersLoading:false})
         }
     },
-    setSelectedUser : (selectedUser) => set({selectedUser})
+    setSelectedUser : (selectedUser) => set({selectedUser}),
+    setShowProfile : (value) => set({showProfile : value})
 }))

@@ -3,20 +3,24 @@ import { useChatStore } from '../store/useChatStore'
 import Sidebar from "../components/sidebar"
 import ChatContainer from "../components/chatContainer"
 import NoChatSelected from '../components/noChatSelected'
+import FriendsProfile from '../components/friendsProfile'
 
 const HomePage = () => {
-  const {selectedUser} = useChatStore()
+  const {selectedUser,showProfile,setShowProfile} = useChatStore()
   return (
     <div className=' bg-base-200'>
       <div className='flex items-center justify-center'>
         <div className='bg-base-100 rounded-lg shadow-cl w-full h-[calc(100vh-10rem)] sm:h-[calc(100vh-5rem)] border-black border-t-2'>
           <div className='flex h-full rounded-lg overflow-hidden'>
             <Sidebar />
-
-            {selectedUser ? <ChatContainer /> : <NoChatSelected />} 
-            
+            {showProfile ? <FriendsProfile {...selectedUser} />
+              :
+              <div className='flex h-full rounded-lg overflow-hidden w-full'>
+                {selectedUser ? <ChatContainer /> : <NoChatSelected />}
+              </div>
+            }
           </div>
-
+         
         </div>
 
       </div>

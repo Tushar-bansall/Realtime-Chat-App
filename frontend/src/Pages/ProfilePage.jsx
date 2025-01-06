@@ -3,7 +3,9 @@ import { useAuthStore } from '../store/useAuthStore'
 
 const ProfilePage = () => {
 
-  const {authUser,updateProfile,isUpdatingProfile} = useAuthStore()
+  const {authUser,updateProfile,isUpdatingProfile,isUpdatingBio,updateBio} = useAuthStore()
+
+  const [bio,setBio] =React.useState(authUser.bio)
 
   const handleImageUpdate = async (e) => {
     const file = e.target.files[0]
@@ -16,16 +18,19 @@ const ProfilePage = () => {
       await updateProfile({profilePicture: base64Image})
     }
 
-    
     reader.readAsDataURL(file)
+  }
+
+  const handleBioUpdate = (e) => {
+    if (e.key === "Enter") {
+    updateBio({bio : bio})}
   }
 
   return (
     <div className='p-4 bg-[url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuJAmi3fHHjog92eHrAEgbL6Y_qe7J_bJdxg&s)] bg-cover '>
-    <div className=' text-center bg-slate-300 w-80 max-w-2xl mx-auto'>
+    <div className=' text-center bg-slate-300 w-80 max-w-4xl mx-auto'>
       <div>
-        <h2 className="pt-2 text-lg md:text-2xl font-bold text-white">Profile</h2>
-        <p className="text-white-300 text-sm font-semibold md:text-lg mt-1">Your Profile Information</p>
+        <h2 className="pt-2 text-lg md:text-2xl font-bold text-red-600">Profile</h2>
       </div>
       <div className="text-center mb-4 mt-2">
         <div className="relative inline-block">
@@ -45,7 +50,7 @@ const ProfilePage = () => {
                 <img
                   src={authUser.profilePicture || "user.png"}
                   alt="Profile"
-                  className="w-24 h-24  md:w-32 md:h-32 rounded-full object-cover border-4 border-indigo-500"
+                  className="w-24 h-24  md:w-32 md:h-32 rounded-full object-cover border-4 border-red-500"
                 />
               </div>
             :
@@ -55,20 +60,62 @@ const ProfilePage = () => {
             
           }
         </div>
-        <h2 className="mt-4 text-lg md:text-xl font-bold text-white">{authUser.fullName}</h2>
-        <p className="text-white-300 text-sm font-medium md:text-base">{authUser.email}</p>
+        <form  className='space-y-6 w-72 p-6 mx-auto' > 
+         <label className="input input-bordered flex items-center gap-1">
+            <span className='label-text font-medium text-nowrap text-yellow-300'>Full Name</span>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              className="h-4 w-4 opacity-70">
+              <path
+                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
+            </svg>
+            <input disabled type="text" className="grow" value={authUser.fullName}      
+            />
+          </label>
+          <label className="input input-bordered flex items-center gap-1 ">
+            <span className='label-text font-medium text-yellow-300'>Email</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              className="h-4 w-4 opacity-70">
+              <path
+                d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
+              <path
+                d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
+            </svg>
+            <input disabled type="email" className="grow" value={authUser.email} 
+            />
+          </label>
+          <label className="input input-bordered flex items-center gap-1 ">
+            <span className='label-text font-medium text-yellow-300'>Bio</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              className="h-4 w-4 opacity-70">
+              <path
+                d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
+              <path
+                d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
+            </svg>
+            {
+              isUpdatingBio 
+              ?
+              <input type="text" value="Loading..."
+            />
+              :
+              <input type="text" className="grow" placeholder='Enter your bio' value={bio } onChange={(e)=>setBio(e.target.value)} onKeyDown={handleBioUpdate}
+            />
+            }
+            
+          </label>
+        </form>
       </div>
-      <div className="bg-gray-500 p-4 w-80 rounded-lg">
-        <h3 className="text-base md:text-lg font-semibold text-white">Account Information</h3>
-        <div className="flex justify-between mt-3 text-sm font-normal md:text-base">
-          <span className="text-white-500 ">Member Since:</span>
-          <span className="text-white-200">{authUser.createdAt?.split("T")[0]}</span>
-        </div>
-        <div className="flex justify-between mt-2 text-sm font-normal md:text-base">
-          <span className="text-white-500">Account Status:</span>
-          <span className="text-green-400 font-bold">Active</span>
-        </div>
-      </div>
+      
     </div>
     </div>
   )

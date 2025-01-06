@@ -9,6 +9,7 @@ import { useAuthStore } from "./store/useAuthStore";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast"
 import { useThemeStore } from "./store/useThemeStore";
+import BottomNavbar from "./components/bottomNavbar";
 
 const App = () => {
   const {authUser, checkAuth, isCheckingAuth} = useAuthStore()
@@ -38,7 +39,7 @@ const App = () => {
         <Route path="/signup" element={ authUser ?  <Navigate to="/"/> : <SignupPage /> } />
         <Route path="/settings" element={ <SettingsPage />} />
       </Routes>
-
+      <BottomNavbar />
       <Toaster />
     </div>
   )

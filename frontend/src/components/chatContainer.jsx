@@ -6,7 +6,6 @@ import ChatSkeleton from './Skeletons/ChatSkeleton'
 import { useAuthStore } from '../store/useAuthStore'
 import { formatMessageTime } from '../lib/utils'
 
-
 const ChatContainer = () => {
     
     const [clickedmsgid,setclickedmsgid] = React.useState(null)

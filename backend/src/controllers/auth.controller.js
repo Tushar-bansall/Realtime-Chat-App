@@ -118,6 +118,21 @@ export const updateProfile= async (req,res) => {
     }
 }
 
+export const updateBio= async (req,res) => {
+    try {
+        const {bio} = req.body
+        const id = req.user._id
+
+        const updatedUser = await User.findByIdAndUpdate(id,{bio : bio}, {new:true})
+
+        res.status(200).json(updatedUser)
+
+    } catch (error) {
+        console.log("Error in update Profile",error.message);
+        res.status(500).json({ message: "Internal Server Error "})
+    }
+}
+
 export const checkAuth = (req,res) => {
     try {
         res.status(200).json(req.user)

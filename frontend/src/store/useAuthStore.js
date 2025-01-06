@@ -10,6 +10,7 @@ export const useAuthStore = create( (set,get) => ({
     isSigningUp : false,
     isLoggingIn : false,
     isUpdatingProfile : false,
+    isUpdatingBio : false,
     isCheckingAuth : true,
     onlineUsers: [],
     socket: null,
@@ -67,11 +68,23 @@ export const useAuthStore = create( (set,get) => ({
         try {
             const res= await axiosInstance.put("api/auth/updateProfile",data)
             set({authUser : res.data})
-            toast.success("Profile picture updated")
+            toast.success("Profile picture successfully updated")
         } catch (error) {
             toast.error(error.response.data.message)
         } finally {
             set({isUpdatingProfile: false})
+        }
+    },
+    updateBio : async (data) => {
+        set({isUpdatingBio: true})
+        try {
+            const res= await axiosInstance.put("api/auth/updateBio",data)
+            set({authUser : res.data})
+            toast.success("Bio successfully updated")
+        } catch (error) {
+            toast.error(error.response.data.message)
+        } finally {
+            set({isUpdatingBio: false})
         }
     },
     connectSocket: () => {
