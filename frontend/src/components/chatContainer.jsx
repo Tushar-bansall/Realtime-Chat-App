@@ -36,7 +36,7 @@ const ChatContainer = () => {
     )}
 
   return (
-    <div  className='flex flex-1 flex-col overflow-auto bg-[url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png)] bg-cover'>
+    <div  className='flex flex-1 flex-col overflow-auto bg-[url(wallpaper.jpg)] bg-cover'>
         <ChatHeader />
 
         <div className='flex-1 flex flex-col overflow-x-hidden sm:overflow-auto p-2'

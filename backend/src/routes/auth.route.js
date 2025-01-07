@@ -16,4 +16,5 @@ router.put("/updateBio",protectRoute , updateBio)
 router.get("/check",protectRoute,checkAuth)
 
 
+
 export default router

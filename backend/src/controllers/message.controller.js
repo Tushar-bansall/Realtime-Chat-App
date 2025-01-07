@@ -108,7 +108,7 @@ export const getFriends = async (req,res) => {
         try {
     
             // Query the User collection for friends
-            const user = await User.findById(req.user._id).populate('friends');
+            const user = await User.findById(req.user._id).populate('friends','fullname profilePicture bio');
             // Send back the users
             res.status(200).json(user.friends);
     
@@ -119,3 +119,60 @@ export const getFriends = async (req,res) => {
         }
     };
     
+
+    export const addFriend = async (req,res) => {
+        const friendId = req.params.id;
+        const userId = req.user._id;
+    
+        try {
+            const friend = await User.findById(friendId);
+    
+            if (!friend) {
+                return res.status(404).json({ message: 'Friend not found' });
+            }
+            
+            const updatedUser = await User.findById(userId);
+            
+            if (updatedUser.friends.includes(friendId)) {
+                return res.status(400).json({ message: 'Friend already added' });
+            }
+            
+            updatedUser.friends.push(friendId);
+            
+            await updatedUser.save(); 
+            
+            updatedUser.populate('friends','fullname profilePicture bio')
+            
+            res.status(201).json(updatedUser.friends);
+        
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server error' });
+        }
+    
+    }
+    
+    export const removeFriend = async (req,res) => {
+        const friendId = req.params.id;  
+        const userId = req.user._id;     
+    
+        try {
+            const updatedUser = await User.findByIdAndUpdate(
+                userId,
+                { $pull: { friends: friendId } },  
+                { new: true }                       
+            ).populate('friends','fullname profilePicture bio');
+            
+            if (!updatedUser) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+    
+            res.status(200).json(updatedUser.friends);
+    
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server error' });
+        }
+    
+    
+    }

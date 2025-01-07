@@ -7,7 +7,7 @@ const navbarbutton = () => {
   const currentURL = location.pathname; // Get the current path
 
   return (
-    <div className="bg-base-100 bg-transparent">
+    <div className=" bg-transparent">
       {currentURL === '/settings' ? (
         // If the current URL is /settings, show the Login button
         <Link to="/login" className="btn btn-md btn-info">
@@ -58,9 +58,9 @@ const Navbar = () => {
   const currentURL = location.pathname; // Get the current path
 
   return (
-      <div className="navbar hidden md:flex bg-base-100 gap-5">
+      <div className="navbar hidden md:flex bg-base-200/40 gap-5">
         <div className="flex-1">
-          <Link to="/" className="btn btn-ghost btn-md text-xl">MT😉Chat</Link>
+          <Link to="/" className="btn btn-ghost btn-md text-xl"><img src="logo.png" className='w-15 h-10 '/></Link>
         </div>
         {authUser && 
           <div>

@@ -17,13 +17,13 @@ const Sidebar = () => {
     if(isUsersLoading) return <SidebarSkeleton />
 
   return (
-    <aside className={`h-full bg-[url(https://wallpapersok.com/images/thumbnail/cute-and-pink-baby-cartoon-cat-background-6t7ls4cahf0desw5.webp)] bg-cover w-32 sm:w-40 md:w-56 lg:w-72 flex flex-col border-r border-base-300 transition-all duration-200
+    <aside className={`h-full bg-[url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png)] w-32 sm:w-40 md:w-56 lg:w-72 flex flex-col border-r border-base-300 transition-all duration-200
      ${selectedUser ? "hidden sm:flex" : "" } 
     `}>
         <div className='border-b border-base-300 w-full p-5'>
             <div className="flex items-center gap-2">
                 <img width="25" height="25" src="https://img.icons8.com/parakeet-line/50/user-group-man-woman.png" alt="user-group-man-woman"/>
-                 <span className=" font-semibold hidden md:block">Friends</span>
+                 <span className=" font-semibold hidden md:block text-zinc-500">Friends</span>
             </div>   
             <div className='mt-3 hidden lg:flex flex-col items-center' >
                 <label className='cursor-pointer flex items-center gap-2'>
@@ -33,7 +33,7 @@ const Sidebar = () => {
                     onChange={(e)=> setShowOnlineOnly(e.target.checked)} 
                     className='checkbox checkbox-xs sm:checkbox-sm checkbox-error border-3'
                     />
-                    <span className='text-xs sm:text-sm font-normal sm:font-medium'>Show online users only</span>
+                    <span className='text-xs sm:text-sm font-normal text-zinc-500 sm:font-medium'>Show online users only</span>
                 </label>
                 <span className='text-xs sm:text-sm sm:font-normal font-light text-zinc-500'>({onlineUsers.length>0 ? onlineUsers.length-1 : 0} online)</span>
             </div>

@@ -31,12 +31,12 @@ const SignupPage = () => {
   }
 
   return (
-    <div className=' grid md:grid-cols-2 h-[calc(100vh-10rem)] sm:h-[calc(100vh-5rem)]'>
+    <div className=' grid md:grid-cols-2 h-[calc(100vh-10rem)] sm:h-[calc(100vh-5rem)] bg-[url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqMdddS5WoPOqsJvn26oVcmzAbH4v92XO87w&s)]'>
     {/* left side */}
-      <div className='flex flex-col bg-[url("https://png.pngtree.com/thumb_back/fh260/background/20220206/pngtree-emoji-of-social-media-or-chat-application-network-emoticon-background-image_985694.jpg")] bg-cover md:bg-none justify-center items-center'>
-        <div className='w-full max-w-md text-center mb-3 flex flex-col items-center group'>
-          <img src="logo.png" className='w-16 h-16 sm:w-20 sm:h-20'/>
-          <h1 className='text-lg sm:text-2xl font-bold mt-2 text-orange-700 md:text-orange-300'> Create Account</h1>
+      <div className='flex flex-col gap-4 bg-[url("https://png.pngtree.com/thumb_back/fh260/background/20220206/pngtree-emoji-of-social-media-or-chat-application-network-emoticon-background-image_985694.jpg")] bg-cover md:bg-none justify-center items-center'>
+        <div className='w-full max-w-md text-center mb-3 flex flex-col items-center group gap-4'>
+          <img src="logo.png" className='w-15 h-11 sm:w-22 sm:h-16'/>
+          <h1 className='text-lg sm:text-2xl font-bold mt-2 text-orange-700'> Create Account</h1>
         </div>
       <form onSubmit={handleSubmit} className='space-y-6 '> 
 

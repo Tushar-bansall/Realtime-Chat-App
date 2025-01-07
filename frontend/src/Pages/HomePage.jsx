@@ -6,7 +6,7 @@ import NoChatSelected from '../components/noChatSelected'
 import FriendsProfile from '../components/friendsProfile'
 
 const HomePage = () => {
-  const {selectedUser,showProfile,setShowProfile} = useChatStore()
+  const {selectedUser,showProfile} = useChatStore()
   return (
     <div className=' bg-base-200'>
       <div className='flex items-center justify-center'>
