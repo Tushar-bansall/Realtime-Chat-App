@@ -7,7 +7,7 @@ const navbarbutton = () => {
   const currentURL = location.pathname; // Get the current path
 
   return (
-    <div className="navbar bg-base-100 bg-transparent">
+    <div className="bg-base-100 bg-transparent">
       {currentURL === '/settings' ? (
         // If the current URL is /settings, show the Login button
         <Link to="/login" className="btn btn-md btn-info">
@@ -63,6 +63,7 @@ const Navbar = () => {
           <Link to="/" className="btn btn-ghost btn-md text-xl">MT😉Chat</Link>
         </div>
         {authUser && 
+          <div>
           <button className="btn btn-xs sm:btn-md btn-ghost btn-circle">
             <div className="indicator">
               <svg
@@ -79,12 +80,13 @@ const Navbar = () => {
               </svg>
               <span className="badge badge-xs indicator-item badge-info">3</span>
             </div>
-          </button>}
+          </button>
           <button className="btn btn-ghost btn-circle btn-md " >
             <svg xmlns="http://www.w3.org/2000/svg" className='w-6 h-6' shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 512"><path fill="#10A64A" d="M256 0c141.387 0 256 114.614 256 256 0 141.387-114.613 256-256 256C114.614 512 0 397.387 0 256 0 114.614 114.614 0 256 0zm122.257 255.999v.004c0 12.532-10.321 22.794-22.79 22.794h-76.671v79.628c0 12.531-10.266 22.79-22.794 22.79h-.004c-12.531 0-22.793-10.324-22.793-22.79v-79.628h-76.668c-12.469 0-22.794-10.316-22.794-22.794v-.004c0-12.478 10.257-22.793 22.794-22.793h76.668V153.58c0-12.466 10.319-22.793 22.793-22.793h.004c12.475 0 22.794 10.258 22.794 22.793v79.626h76.671c12.533 0 22.79 10.267 22.79 22.793z"/></svg>        
           </button>
-          
-          <form class="flex items-center max-w-[calc(60vw)] ">   
+          </div>
+        }
+          <form class=" max-w-[calc(60vw)] ">   
               <div class="relative">
                   <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block sm:ps-10 p-0.5 sm:p-1.5 md:p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for friends" />                  
               </div>
