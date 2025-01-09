@@ -5,7 +5,7 @@ import { useAuthStore } from '../store/useAuthStore'
 const BottomNavbar = () => {
     const {logout} = useAuthStore()
   return (
-    <div className="btm-nav md:hidden justify-evenly flex items-center bg-base-200/40">
+    <div className="btm-nav md:hidden justify-evenly flex items-center bg-gray-800">
         <Link to="/" className=" flex justify-center items-center">
             <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -106,9 +106,8 @@ export const messageReact = async (req,res) => {
 
 export const getFriends = async (req,res) => {
         try {
-    
             // Query the User collection for friends
-            const user = await User.findById(req.user._id).populate('friends','fullname profilePicture bio');
+            const user = await User.findById(req.params.id).populate('friends','fullName profilePicture bio');
             // Send back the users
             res.status(200).json(user.friends);
     
@@ -137,13 +136,17 @@ export const getFriends = async (req,res) => {
                 return res.status(400).json({ message: 'Friend already added' });
             }
             
-            updatedUser.friends.push(friendId);
+            const user = await User.findByIdAndUpdate(
+                userId,
+                { $push: { friends: friendId } },  
+                { new: true }                       
+            ).populate('friends','fullName profilePicture bio');
             
-            await updatedUser.save(); 
+            if(!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
             
-            updatedUser.populate('friends','fullname profilePicture bio')
-            
-            res.status(201).json(updatedUser.friends);
+            res.status(201).json(user.friends);
         
         } catch (error) {
             console.error(error);

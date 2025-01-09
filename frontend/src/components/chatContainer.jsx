@@ -5,6 +5,7 @@ import ChatInput from './ChatInput'
 import ChatSkeleton from './Skeletons/ChatSkeleton'
 import { useAuthStore } from '../store/useAuthStore'
 import { formatMessageTime } from '../lib/utils'
+import FriendsProfile from './friendsProfile'
 
 const ChatContainer = () => {
     
@@ -36,7 +37,7 @@ const ChatContainer = () => {
     )}
 
   return (
-    <div  className='flex flex-1 flex-col overflow-auto bg-[url(wallpaper.jpg)] bg-cover'>
+    <div  className='flex flex-1 flex-col overflow-auto bg-[url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png)] bg-cover'>
         <ChatHeader />
 
         <div className='flex-1 flex flex-col overflow-x-hidden sm:overflow-auto p-2'
@@ -58,9 +59,10 @@ const ChatContainer = () => {
                             </div>
                         </div>                    
                             <div 
-                                class={` chat-bubble flex flex-col 
-                                    ${message.senderid === authUser._id ? "chat-bubble-info" : "chat-bubble-warning"}`
-                                } 
+                                class={` chat-bubble flex flex-col rounded-2xl shadow-md text-zinc-800 cursor-pointer`}
+                                style={message.senderid === authUser._id ?  {backgroundColor:"#00a96e"} : {backgroundColor:"#ffffff"} }
+                                    
+                                
                                 onClick={() => setclickedmsgid(message._id)}
                             >
                                 {message.image && 
@@ -70,7 +72,7 @@ const ChatContainer = () => {
                                 <span class="text-xs opacity-50 flex justify-end">{formatMessageTime(message.createdAt)}</span>                   
                             </div>
                             {clickedmsgid === message._id && <div className="chat-header ">
-                                <div className="w-fit bg-base-100/20 rounded-badge">
+                                <div className="w-fit bg-base-100/20 rounded-2xl">
                                 
                                     <button className="btn btn-sm btn-circle btn-ghost" value='❤️️' onClick={(e) => {setclickedmsgid(null);sendReaction({message_id : message._id,reaction: e.target.value})}}>❤️️</button>
                                     <button className="btn btn-sm btn-circle btn-ghost" value='👍' onClick={(e) => {setclickedmsgid(null);sendReaction({message_id : message._id,reaction: e.target.value})}}>👍</button>
@@ -82,17 +84,20 @@ const ChatContainer = () => {
                             <div>
                                 <div className={` dropdown dropdown-end 
                                 ${message.senderid === authUser._id ? "dropdown-left" : "dropdown-right"}`}>
-                                    <div tabIndex={0} role="button" className="btn p-0 btn-xs bg-base-100/20 ">
+                                    <div tabIndex={0} role="button" className="btn p-1 btn-xs bg-base-100/20 rounded-xl text-md btn-primary">
                                         {Object.entries(message.reactions).slice(0, 2) // Get the first 2 entries
                                             .map(([key, value]) => (
                                                 <p> {value}</p>
                                         ))}
                                     </div>
-                                    <ul tabIndex={0} className="dropdown-content menu bg-base-100/20 rounded-box z-[1] w-fit mx-auto p-1 shadow text-white text-nowrap font-semibold">
+                                    <ul tabIndex={0} className="dropdown-content menu bg-base-100/20 rounded-2xl z-[1] shadow text-white backdrop-blur-sm">
                                         {Object.entries(message.reactions).map(([key, value]) => (
-                                        <li key={key} className='text-base sm:text-bold text-nowrap'>
-                                            {key}:{value}
-                                        </li>
+                                            <li key={key} className="text-sm font-semibold sm:font-bold ">
+                                                {key}:{value}
+                                            </li>
+
+
+
                                         ))}
                                     </ul>
                                 </div>
@@ -103,6 +108,7 @@ const ChatContainer = () => {
             ))}
         </div>
         <ChatInput />
+        <FriendsProfile {...selectedUser}/>
     </div>
   )
 }

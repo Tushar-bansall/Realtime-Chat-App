@@ -10,7 +10,6 @@ export const useChatStore = create((set,get) => ({
     selectedUser: null,
     isUsersLoading: false,
     isMessagesLoading: false,
-    showProfile:false,
 
     getUsers: async() => {
         set({isUsersLoading:true})
@@ -99,19 +98,20 @@ export const useChatStore = create((set,get) => ({
         
     },
     getFriends : async () => {
+        const authUser= useAuthStore.getState().authUser
         set({isUsersLoading:true})
         try {
-            const res= await axiosInstance.get('api/messages/friends')
+            const res= await axiosInstance.get(`api/messages/friends/${authUser._id}`)
             set({ friends: res.data });
         } catch (error) {
-            toast.error(error.response.data.message)
+            console.log(error)
         } finally {
             set({isUsersLoading:false})
         }
     },
     addFriend : async (data) => {
         try {
-            const res= await axiosInstance.put(`api/messages/${data}/addFriend`)
+            const res= await axiosInstance.put(`api/messages/addFriend/${data}`)
             set({ friends: res.data });
         } catch (error) {
             toast.error(error.response.data.message)
@@ -119,12 +119,11 @@ export const useChatStore = create((set,get) => ({
     },
     removeFriend : async (data) => {
         try {
-            const res= await axiosInstance.put(`api/messages/${data}/removeFriend`)
+            const res= await axiosInstance.put(`api/messages/removeFriend/${data}`)
             set({ friends: res.data });
         } catch (error) {
             toast.error(error.response.data.message)
         }
     },
     setSelectedUser : (selectedUser) => set({selectedUser}),
-    setShowProfile : (showProfile) => set({showProfile})
 }))

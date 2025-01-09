@@ -17,7 +17,7 @@ export const signup= async (req,res)=>{
 
         if(user)
         {
-            res.status(400).send({ message: "User already exist with this email "})
+            return res.status(400).json({ message: "User already exist with this email "})
         }
 
         const salt = await bcrypt.genSalt(10)

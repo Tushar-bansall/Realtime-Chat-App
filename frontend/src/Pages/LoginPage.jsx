@@ -19,7 +19,7 @@ const LoginPage = () => {
   return (
     <div className=' grid md:grid-cols-2  h-[calc(100vh-10rem)] sm:h-[calc(100vh-5rem)] bg-[url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqMdddS5WoPOqsJvn26oVcmzAbH4v92XO87w&s)]'>
     {/* left side */}
-      <div className='flex flex-col gap-4 bg-[url("https://png.pngtree.com/thumb_back/fh260/background/20220206/pngtree-emoji-of-social-media-or-chat-application-network-emoticon-background-image_985694.jpg")] bg-cover md:bg-none justify-center items-center'>
+      <div className='flex flex-col gap-4 justify-center items-center'>
         <div className='w-full max-w-md text-center mb-5 flex flex-col items-center group gap-4'>
           <img src="logo.png" className='w-15 h-11 sm:w-22 sm:h-16'/>
           <h1 className='text-lg sm:text-2xl font-bold mt-2 text-orange-700'> Login</h1>
@@ -48,7 +48,7 @@ const LoginPage = () => {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               fill="currentColor"
-              className="h-4 w-4 opacity-70">
+              className="h-5 w-5 opacity-70">
               <path
                 fillRule="evenodd"
                 d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"

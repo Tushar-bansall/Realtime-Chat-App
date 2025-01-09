@@ -23,14 +23,14 @@ const userSchema= new mongoose.Schema(
             type: String,
             default : ""
         },
-        bio: {
-            type: String,
-            default : ""
-        },
         friends: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
-        }]
+        }],
+        bio: {
+            type: String,
+            default : ""
+        }
     },
     {
         timestamps: true,
