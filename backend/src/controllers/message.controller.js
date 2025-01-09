@@ -164,7 +164,7 @@ export const getFriends = async (req,res) => {
                 userId,
                 { $pull: { friends: friendId } },  
                 { new: true }                       
-            ).populate('friends','fullname profilePicture bio');
+            ).populate('friends','fullName profilePicture bio');
             
             if (!updatedUser) {
                 return res.status(404).json({ message: 'User not found' });
