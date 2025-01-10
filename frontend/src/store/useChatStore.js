@@ -111,7 +111,10 @@ export const useChatStore = create((set,get) => ({
     },
     addFriend : async (data) => {
         try {
+            document.getElementById('my_modal_2').close()
+            
             const res= await axiosInstance.put(`api/messages/addFriend/${data}`)
+            toast.success("Friend added successfully")
             set({ friends: res.data });
         } catch (error) {
             toast.error(error.response.data.message)
@@ -119,7 +122,10 @@ export const useChatStore = create((set,get) => ({
     },
     removeFriend : async (data) => {
         try {
+            document.getElementById('my_modal_1').close()
+            get().setSelectedUser(null)
             const res= await axiosInstance.put(`api/messages/removeFriend/${data}`)
+            toast.success("Friend removed successfully")
             set({ friends: res.data });
         } catch (error) {
             toast.error(error.response.data.message)
