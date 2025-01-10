@@ -36,9 +36,9 @@ const UsersPage = () => {
               {/* Open the modal using document.getElementById('ID').showModal() method */}
               {selected && 
               <dialog id="my_modal_2" className="modal modal-bottom md:modal-middle ">
-                <div className="modal-box bg-base-200/50">
-                  <div className='p-4 flex flex-col backdrop-blur-sm items-center justify-center w-full'>
-                    <div className="p-6 w-fit max-w-2xl flex flex-col gap-3 justify-center items-center">
+                <div className="modal-box bg-base-200/50 w-80 max-w-2xl mx-auto">
+                  <div className='p-4 flex flex-col backdrop-blur-sm items-center justify-center'>
+                    <div className="p-6 flex flex-col gap-3 justify-center items-center">
                           <img
                           src={selected.profilePicture || "user.png"}
                           alt="Profile"

@@ -38,7 +38,7 @@ const SignupPage = () => {
           <img src="logo.png" className='w-15 h-11 sm:w-22 sm:h-16'/>
           <h1 className='text-lg sm:text-2xl font-bold mt-2 text-orange-700'> Create Account</h1>
         </div>
-      <form onSubmit={handleSubmit} className='space-y-6 '> 
+      <form onSubmit={handleSubmit} className='space-y-6 w-[calc(100vw-5rem)] md:w-80'> 
 
         <label className="input input-bordered flex items-center gap-2">
           <span className='label-text font-medium text-yellow-300'>Full Name</span>

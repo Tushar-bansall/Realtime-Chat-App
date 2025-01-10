@@ -4,7 +4,7 @@ import { useChatStore } from '../store/useChatStore'
 const FriendsProfile = (props) => {
     const {removeFriend} = useChatStore()
   return (
-    <dialog id='my_modal_1' className='modal modal-bottom md:modal-middle p-4 flex flex-col items-center justify-center bg-gray-800/40 '>
+    <dialog id='my_modal_1' className=' p-4 flex flex-col items-center justify-center bg-gray-800/40 modal modal-bottom md:modal-middle  '>
         <div className='p-6 bg-base-200/50 w-80 max-w-2xl modal-box backdrop-blur-sm'>
             <div className="flex flex-col gap-3 justify-center items-center ">
                  <form method="dialog">
