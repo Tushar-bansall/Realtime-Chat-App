@@ -20,7 +20,7 @@ const Sidebar = () => {
     if(isUsersLoading) return <SidebarSkeleton />
 
   return (
-    <aside className={`h-full bg-[url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png)] w-32 sm:w-40 md:w-56 lg:w-72 flex flex-col border-r border-base-300 transition-all duration-200
+    <aside className={`h-full bg-[url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png)] w-40 md:w-56 lg:w-72 flex flex-col border-r border-base-300 transition-all duration-200
      ${selectedUser ? "hidden sm:flex" : "" } 
     `}>
         <div className='border-b border-base-300 w-full p-5'>

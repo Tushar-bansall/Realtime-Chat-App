@@ -136,11 +136,17 @@ export const getFriends = async (req,res) => {
                 return res.status(400).json({ message: 'Friend already added' });
             }
             
+            await User.findByIdAndUpdate(
+                friendId,
+                { $push: { friends: userId } },                  
+            );
+
             const user = await User.findByIdAndUpdate(
                 userId,
                 { $push: { friends: friendId } },  
                 { new: true }                       
             ).populate('friends','fullName profilePicture bio');
+
             
             if(!user) {
                 return res.status(404).json({ message: 'User not found' });
@@ -159,14 +165,20 @@ export const getFriends = async (req,res) => {
         const friendId = req.params.id;  
         const userId = req.user._id;     
     
-        try {
+        try {         
+
+            await User.findByIdAndUpdate(
+                friendId,
+                { $pull: { friends: userId } }             
+            );
+
             const updatedUser = await User.findByIdAndUpdate(
                 userId,
                 { $pull: { friends: friendId } },  
                 { new: true }                       
             ).populate('friends','fullName profilePicture bio');
             
-            if (!updatedUser) {
+            if (!updatedUser ) {
                 return res.status(404).json({ message: 'User not found' });
             }
     
