@@ -2,6 +2,7 @@ import { create } from "zustand";
 import {axiosInstance } from "../lib/axios.js"
 import toast from "react-hot-toast";
 import {io} from "socket.io-client"
+import { useChatStore } from "./useChatStore.js";
 
 const BASE_URL = import.meta.env.MODE ==='development' ? "http://localhost:8000" : "/"
 
@@ -29,9 +30,11 @@ export const useAuthStore = create( (set,get) => ({
     },
     signup : async (data) => {
         set({isSigningUp: true})
+        const {setSelectedUser} = useChatStore()
         try {
             const res = await axiosInstance.post("/api/auth/signup",data);
             set({authUser:res.data})
+            setSelectedUser(null)
             toast.success("Account Created successfully")
             get().connectSocket()
         } catch (error) {
@@ -109,5 +112,20 @@ export const useAuthStore = create( (set,get) => ({
         {
             get().socket.disconnect()
         }
-    }
+    },
+    handleCredentialResponse : async (response) => {
+    
+        const id_token = response.credential;
+        try {
+            const res= await axiosInstance.post("/api/auth/google",{
+                id_token: id_token
+            })
+            set({authUser:res.data})            
+            toast.success("Logged In Successfully")
+
+        } catch (error) {
+            console.log("Error in checkAuth", error.message);
+            set({authUser: null})
+        }
+    },
 }))

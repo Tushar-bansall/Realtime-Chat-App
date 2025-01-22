@@ -4,12 +4,31 @@ import {Link} from 'react-router-dom'
 import AuthImagePattern from '../components/AuthImagePattern'
 
 const LoginPage = () => {
+
+
   const [formData,setformData] = React.useState({
     email:"",
     password:""
   })
   
-  const {login, isLoggingIn} = useAuthStore()
+  const {login, isLoggingIn,handleCredentialResponse} = useAuthStore()
+
+    
+  window.handleCredentialResponse= handleCredentialResponse
+
+
+  React.useEffect(()=>{
+    const script = document.createElement("script")
+    script.src="https://accounts.google.com/gsi/client"
+    script.async=true
+    script.defer = true
+    document.body.appendChild(script)
+
+    return ()=>{
+      document.body.removeChild(script)
+
+    }
+  },[])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -21,8 +40,7 @@ const LoginPage = () => {
     {/* left side */}
       <div className='flex flex-col gap-4 justify-center items-center'>
         <div className='w-full max-w-md text-center mb-5 flex flex-col items-center group gap-4'>
-          <img src="logo.png" className='w-15 h-11 sm:w-22 sm:h-16'/>
-          <h1 className='text-lg sm:text-2xl font-bold mt-2 text-orange-700'> Login</h1>
+         <h1 className='text-lg sm:text-2xl font-bold mt-2 text-orange-700'> Login</h1>
         </div>
         <form onSubmit={handleSubmit} className='space-y-6 w-[calc(100vw-5rem)] md:w-80 '> 
           <label className="input input-bordered flex items-center gap-2 ">
@@ -63,12 +81,27 @@ const LoginPage = () => {
         </form>
 
         <div className='text-center ' style={{margin: 15}}>
+            
+          <div id="g_id_onload"
+          data-client_id="127607273969-unke3e8nevhb40vqdvg3u9q1aq1ce5u9.apps.googleusercontent.com"
+          data-callback="handleCredentialResponse"
+          data-auto_prompt = "false"></div>
+          <div className="g_id_signin mb-3 bg-transparent"
+            data-type="standard"
+            data-shape="pill"
+            data-theme="outline"
+            data-text="sign_in_with"
+            data-size="large"
+            data-logo_alignment="left">
+
+          </div>
           <p className='text-base-content/60 text-blue-800 md:text-blue-500 text-sm sm:text-base'>
               Create New Account?{" "}
               <Link to="/signup" className="link link-primary text-blue-800 md:text-blue-500"> Sign Up</Link>
           </p>
-
         </div>
+        
+      
       </div>
       
       {/* right side */}

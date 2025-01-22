@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom'
 
 const UsersPage = () => {
   const {authUser} = useAuthStore()
-  const {addFriend,users,getUsers,setSelectedUser,friends} = useChatStore()
+  const {addFriend,users,getUsers,setSelectedUser,friends,getFriends} = useChatStore()
   const [selected,setSelected] = React.useState(null)
 
   useEffect(() =>
-  {getUsers()}
-  ,[getUsers])
+  {getUsers()
+    getFriends()
+  }
+  ,[getUsers,getFriends])
 
   const friendsId = new Set(friends.map((friend)=> friend._id))
   const remainingUsers = users.filter((user) => !(friendsId.has(user._id)))
