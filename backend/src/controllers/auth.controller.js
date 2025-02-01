@@ -2,8 +2,12 @@ import User from "../models/user.model.js"
 import bcrypt from "bcryptjs"
 import { generateToken } from "../lib/utils.js"
 import cloudinary from '../lib/cloudinary.js'
+import { createRequire } from "module"; // Import createRequire
 
+const require = createRequire(import.meta.url); // Create a CommonJS require function
+const { RtcTokenBuilder, RtcRole } = require("agora-access-token");
 import {OAuth2Client} from "google-auth-library"
+import { getReceiverSocketId,io } from "../lib/socket.js"
 
 export const signup= async (req,res)=>{
     const {fullName,email,password} = req.body
@@ -110,7 +114,10 @@ export const updateProfile= async (req,res) => {
 
         const response = await cloudinary.uploader.upload(profilePicture)
 
-        const updatedUser = await User.findByIdAndUpdate(id,{profilePicture : response.secure_url}, {new:true})
+        const updatedUser = await User.findByIdAndUpdate(id,{profilePicture : response.secure_url,
+            profilePictureUpdatedAt: Date.now()
+        }, {new:true})
+        console.log("Updated:",Date.now());
 
         res.status(200).json(updatedUser)
 
@@ -119,6 +126,8 @@ export const updateProfile= async (req,res) => {
         res.status(500).json({ message: "Internal Server Error "})
     }
 }
+
+
 
 export const updateBio= async (req,res) => {
     try {
@@ -134,6 +143,32 @@ export const updateBio= async (req,res) => {
         res.status(500).json({ message: "Internal Server Error "})
     }
 }
+
+export const tokengenerate = async (req, res) => {
+    const { channelName, uid } = req.body;
+  
+    if (!channelName) {
+      return res.status(400).json({ error: "Channel name is required" });
+    }
+  
+    const role = RtcRole.PUBLISHER;
+    const expirationTimeInSeconds = 3600; // Token valid for 1 hour
+    const currentTimestamp = Math.floor(Date.now() / 1000);
+    const privilegeExpiredTs = currentTimestamp + expirationTimeInSeconds;
+  
+    const token = RtcTokenBuilder.buildTokenWithUid(
+      process.env.AGORA_APP_ID,
+      process.env.AGORA_APP_CERTIFICATE,
+      channelName,
+      uid || 0, // Use 0 for dynamic UID assignment
+      role,
+      privilegeExpiredTs
+    );
+
+    io.emit("videoCall",{channelName,token})
+  
+    res.json({ token });
+  }
 
 export const checkAuth = (req,res) => {
     try {

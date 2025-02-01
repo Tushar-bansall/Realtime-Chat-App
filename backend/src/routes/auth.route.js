@@ -1,5 +1,5 @@
 import express from 'express'
-import {signup,login,logout,updateProfile,checkAuth,updateBio,googleLogin} from '../controllers/auth.controller.js'
+import {signup,login,logout,updateProfile,checkAuth,updateBio,googleLogin, tokengenerate} from '../controllers/auth.controller.js'
 import {protectRoute} from '../middleware/protectRoute.middleware.js'
 
 const router = express.Router()
@@ -15,6 +15,7 @@ router.put("/updateBio",protectRoute , updateBio)
 
 router.post("/google",googleLogin)
 router.get("/check",protectRoute,checkAuth)
+router.post("/generate-token",tokengenerate)
 
 
 

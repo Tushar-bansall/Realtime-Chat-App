@@ -14,6 +14,8 @@ export const useAuthStore = create( (set,get) => ({
     isUpdatingBio : false,
     isCheckingAuth : true,
     onlineUsers: [],
+    rchannelName: null,
+    rtoken: null,
     socket: null,
     
     checkAuth : async() => {
@@ -127,5 +129,25 @@ export const useAuthStore = create( (set,get) => ({
             console.log("Error in checkAuth", error.message);
             set({authUser: null})
         }
+    },
+    fetchToken : async (channelName, uid) => {
+        const response = await axiosInstance.post("http://localhost:8000/api/auth/generate-token",
+         { channelName, uid }
+        );
+        return response.data.token;
+    },
+    subscribeToCalls: () => {
+        const socket = get().socket
+
+        socket.on("videoCall",(data) => {
+            console.log(data);
+            set({rchannelName:data.channelName,
+                rtoken:data.token
+            })
+        });
+    },
+    unsubscribeFromCalls: () => {
+        const socket = get().socket
+        socket.off("videoCall")
     },
 }))

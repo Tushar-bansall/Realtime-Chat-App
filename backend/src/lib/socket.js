@@ -2,6 +2,9 @@ import {Server } from "socket.io"
 import http from "http"
 import express from "express"
 
+import pkg from 'agora-access-token';
+const { RtcTokenBuilder, RtcRole } = pkg;
+
 const app = express()
 const server = http.createServer(app)
 
@@ -27,9 +30,10 @@ io.on("connection",(socket) => {
     io.emit("getOnlineUsers",Object.keys(userSocketMap))
 
     socket.on("disconnect",() => {
-        delete userSocketMap[userId]
-        io.emit("getOnlineUsers",Object.keys(userSocketMap))
-    })
+      delete userSocketMap[userId]
+      io.emit("getOnlineUsers",Object.keys(userSocketMap))
+  })
+  ;
 })
 
 export {io, app, server,getReceiverSocketId}

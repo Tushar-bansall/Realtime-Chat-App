@@ -1,9 +1,9 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useAuthStore } from '../store/useAuthStore'
 
 const ProfilePage = () => {
 
-  const {authUser,updateProfile,isUpdatingProfile,isUpdatingBio,updateBio} = useAuthStore()
+  const {authUser, updateProfile,isUpdatingProfile,isUpdatingBio,updateBio} = useAuthStore()
 
   const [bio,setBio] =React.useState(authUser.bio)
 
