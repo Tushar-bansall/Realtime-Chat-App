@@ -20,7 +20,7 @@ const Sidebar = () => {
     if(isUsersLoading) return <SidebarSkeleton />
 
   return (
-    <aside className={`h-full bg-[url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png)] w-40 md:w-56 lg:w-72 flex flex-col border-r border-base-300 transition-all duration-200
+    <aside className={`h-full bg-[url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png)] w-full md:w-56 lg:w-72 flex flex-col border-r border-base-300 transition-all duration-200
      ${selectedUser ? "hidden sm:flex" : "" } 
     `}>
         <div className='border-b border-base-300 w-full p-5'>
@@ -43,35 +43,35 @@ const Sidebar = () => {
         </div>
         <div className="overflow-y-auto w-full py-3 ">
             {filteredUsers.map((user) => (
+               
                 <button
                 key={user._id}
                 onClick={() =>setSelectedUser(user)} 
-                className={`w-full p-3 flex items-center md:gap-3  hover:bg-slate-50 transition-colors
+                className={`w-full shadow-lg  p-3 flex items-center gap-3  hover:bg-slate-50 transition-colors
                 ${selectedUser?._id === user._id ? " bg-green-500 text-black hover:text-orange-300 ring-1 ring-base-300" : ""}
                 `}
                 >
-                <div className="relative mr-1 sm:mr-1.5 sm:ml-1 lg:mx-0">
+                <div className="relative ">
                     <img
                         src={user.profilePicture || "https://img.icons8.com/ios/50/user-male-circle--v1.png"} 
                         alt={user.name}
-                        className={`size-5 sm:size-7 md:size-10 object-cover rounded-full`}
+                        className={`size-10 object-cover rounded-full`}
                     />
                     {onlineUsers.includes(user._id) ? 
                         <span
-                            className="absolute bottom-0 right-0 size-1 sm:size-2 md:size-3 bg-green-500 rounded-full ring-2 ring-zinc-900"/>
+                            className="absolute bottom-0 right-0 size-3 bg-green-500 rounded-full ring-2 ring-zinc-900"/>
                         : <span
-                            className="absolute bottom-0 right-0 size-1 sm:size-2 md:size-3  bg-red-500 rounded-full ring-2 ring-zinc-900"/>
+                            className="absolute bottom-0 right-0 size-3  bg-red-500 rounded-full ring-2 ring-zinc-900"/>
                     }
                 </div>
-            {/* User info - only visible on larger screens */} 
                 <div className="inline-block "> 
-                    <div className="text-xs font-thin sm:text-sm sm:font-extralight md:text-base md:font-medium text-zinc-800">{user.fullName}</div>
+                    <div className="text-base font-medium text-zinc-800">{user.fullName}</div>
                     {onlineUsers.includes(user._id) ? 
-                        <span class="hidden md:inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-0.5 md:px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
+                        <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
                             <span class="w-2 h-2 me-1 bg-green-500 rounded-full"></span>
                             Online
                         </span> : 
-                        <span class="hidden md:inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-0.5 md:px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+                        <span class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
                             <span class="w-2 h-2 me-1 bg-red-500 rounded-full"></span>
                             Offline
                         </span>

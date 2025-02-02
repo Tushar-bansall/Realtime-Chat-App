@@ -60,7 +60,7 @@ const Navbar = () => {
   return (
       <div className="navbar hidden md:flex bg-gray-800 gap-5">
         <div className="flex-1">
-          <Link to="/" className="btn btn-ghost btn-md text-xl"><img src="logo.png" className='w-15 h-10 '/></Link>
+          <Link to="/" className="btn bg-blue-500 btn-outline btn-md text-2xl font-bold rounded-2xl">BuzzChat</Link>
         </div>
         {authUser && 
           <div>

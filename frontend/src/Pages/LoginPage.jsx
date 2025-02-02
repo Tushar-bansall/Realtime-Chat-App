@@ -40,11 +40,11 @@ const LoginPage = () => {
     {/* left side */}
       <div className='flex flex-col gap-4 justify-center items-center'>
         <div className='w-full max-w-md text-center mb-5 flex flex-col items-center group gap-4'>
-         <h1 className='text-lg sm:text-2xl font-bold mt-2 text-orange-700'> Login</h1>
+         <h1 className='text-lg sm:text-2xl font-bold mt-2 text-purple-900'> Login</h1>
         </div>
         <form onSubmit={handleSubmit} className='space-y-6 w-[calc(100vw-5rem)] md:w-80 '> 
           <label className="input input-bordered flex items-center gap-2 ">
-            <span className='label-text font-medium text-yellow-300'>Email</span>
+            <span className='label-text font-medium text-blue-400'>Email</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -60,7 +60,7 @@ const LoginPage = () => {
             />
           </label>
           <label className="input input-bordered flex items-center gap-2">
-            <span className='label-text font-medium text-yellow-300'>Password</span>
+            <span className='label-text font-medium text-blue-400'>Password</span>
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +76,7 @@ const LoginPage = () => {
               setformData({...formData,password:e.target.value})}         
             />
           </label>
-          { !isLoggingIn ? <button type='submit' className="btn btn-sm sm:btn-md btn-outline btn-success text-base w-full">Login</button>
+          { !isLoggingIn ? <button type='submit' className="btn btn-sm sm:btn-md bg-blue-500 btn-outline text-base w-full">Login</button>
               : <button className="btn w-full"><span className="loading loading-spinner"></span>loading</button>}
         </form>
 

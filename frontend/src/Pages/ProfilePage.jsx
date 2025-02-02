@@ -27,7 +27,7 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className=" bg-[url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuJAmi3fHHjog92eHrAEgbL6Y_qe7J_bJdxg&s)] bg-cover flex items-center justify-center h-[calc(100vh-10rem)] sm:h-[calc(100vh-5rem)]">
+    <div className=" bg-slate-200 flex items-center justify-center h-[calc(100vh-10rem)] sm:h-[calc(100vh-5rem)]">
     <div className="text-center bg-slate-300 w-80 max-w-4xl mx-auto pt-4">
       <div>
         <h2 className=" text-lg md:text-2xl font-bold text-indigo-600">Profile</h2>

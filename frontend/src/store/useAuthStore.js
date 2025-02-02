@@ -16,8 +16,13 @@ export const useAuthStore = create( (set,get) => ({
     onlineUsers: [],
     rchannelName: null,
     rtoken: null,
+    token:null,
+    channel:null,
     socket: null,
-    
+    calling : false,
+    setCalling : (calling) => set({calling}),
+    setChannel : (channel) => set({channel}),
+    setToken : (token) => set({token}),
     checkAuth : async() => {
         try {
             const res = await axiosInstance.get("/api/auth/check");
@@ -142,7 +147,8 @@ export const useAuthStore = create( (set,get) => ({
         socket.on("videoCall",(data) => {
             console.log(data);
             set({rchannelName:data.channelName,
-                rtoken:data.token
+                rtoken:data.token,
+                calling : true
             })
         });
     },
