@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link } from 'react-router-dom'
 import { useChatStore } from '../store/useChatStore'
 import { useAuthStore } from '../store/useAuthStore'
 

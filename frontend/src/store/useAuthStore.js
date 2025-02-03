@@ -137,7 +137,7 @@ export const useAuthStore = create( (set,get) => ({
     },
     fetchToken : async (channelName, uid) => {
         const response = await axiosInstance.post("http://localhost:8000/api/auth/generate-token",
-         { channelName, uid }
+         { channelName, uid , userToCallToId : useChatStore.getState().selectedUser._id}
         );
         return response.data.token;
     },

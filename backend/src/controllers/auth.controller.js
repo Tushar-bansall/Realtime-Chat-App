@@ -145,7 +145,8 @@ export const updateBio= async (req,res) => {
 }
 
 export const tokengenerate = async (req, res) => {
-    const { channelName, uid } = req.body;
+    const { channelName, uid,userToCallToId } = req.body;
+    const socketId=getReceiverSocketId(userToCallToId)
   
     if (!channelName) {
       return res.status(400).json({ error: "Channel name is required" });
@@ -165,7 +166,7 @@ export const tokengenerate = async (req, res) => {
       privilegeExpiredTs
     );
 
-    io.emit("videoCall",{channelName,token})
+    io.to(socketId).emit("videoCall",{channelName,token})
   
     res.json({ token });
   }
