@@ -1,120 +1,93 @@
- Real-Time Chat Application
+💬 BuzzChat – Real-Time Chat & Video Calling 🚀
+--------------------------------------------------------------
 
-Welcome to the Real-Time Chat Application, a seamless messaging platform that allows users to engage in one-on-one conversations. This application supports real-time text and image messaging, profile management, and much more.
+BuzzChat is a MERN-stack real-time chat platform with one-on-one & group messaging, image sharing, voice & video calls (powered by Agora), Google authentication, friend suggestions and updates, and status updates. Designed for seamless communication, it ensures secure, fast, and interactive conversations.
 
-________________________________________
+--------------------------------------------------------------
 
- Features
+🌟 Features
+🔹 Real-Time One-on-One & Group Chat
+✅ Instant Messaging – Send and receive messages in real time.
+✅ Typing Indicators – Know when someone is typing.
+✅ Message Notifications – Get instant alerts for new messages.
+✅ Message History – Search past conversations easily.
+✅ Group Chats – Create and manage groups, add/remove members, and send messages.
 
- 1. Real-Time One-on-One Chat
-   - Instant messaging: Send and receive text messages in real-time.
-   - Typing indicators: See when your contact is typing a message.
-   - Message notifications: Receive notifications for new messages.
-   - Message history: View and search past conversations.
+🔹 Text & Image Messaging
+✅ Text Chat – Quick and efficient message delivery.
+✅ Image Sharing – Send and receive images instantly.
+✅ Multimedia Support – Inline image previews for a richer experience.
 
- 2. Text & Image Messaging
-   - Text chat: Send and receive text messages instantly.
-   - Image sharing: Easily send and receive images in real-time.
-   - Multimedia support: Images are displayed inline in the conversation for a richer experience.
+🔹 Voice & Video Calling (Agora Integration)
+✅ One-on-One Video and Voice Calls – High-quality, real-time video and voice chat.
+✅ Mute & Cancel Call – Manage audio/video settings easily.
 
- 3. User Profile Management
-   - Profile picture update: Upload and set a profile picture for personalization.
-   - Edit profile: Change your username, bio, and other settings.
-   - Privacy settings: Control who can view your profile and message you.
+🔹 User Authentication & Security
+✅ Google Authentication – Sign in quickly using Google.
+✅ Secure Sign-up/Login – Authenticate via email/password.
+✅ Session Management – Stay logged in across devices.
+✅ JWT-Based Authentication – Secure login system.
 
- 4. User Authentication
-   - Sign-up/Login system: Secure user authentication with email/password or social media integration.
-   - Real-time sessions: Stay logged in and receive real-time notifications across devices.
+🔹 Group Messaging & Status Updates
+✅ Create & Manage Groups – Add/remove participants easily.
+✅ Status Updates – Share text/image status updates visible to friends.
 
-________________________________________
+🔹 User Profile Management and Friend Suggestions
+✅ Profile Picture Update – Upload and change profile pictures.
+✅ Edit Profile – Update username, bio, and other personal details. ✅ *Friend Suggestion Management – View, send, and manage friend requests, adjust suggestion algorithms, hide/block suggestions, and add or remove friends from available users
 
- Technology Stack
+🔹 Settings & Customization
+✅ Change Theme – Switch between dark & light modes.
+✅ Notification Preferences – Enable/disable message alerts.
 
-- Frontend:
-  - Vite.js for fast frontend development.
-  - React.js for building the user interface.
-  - Socket.io for real-time messaging.
-  - TailwindCSS for responsive and modern design.
-  - Zustand for managing global states
+--------------------------------------------------------------
 
-- Backend:
-  - Node.js with Express.js for the API server.
-  - MongoDB for storing user data, messages, and profiles.
-  - JWT (JSON Web Tokens) for secure authentication.
-  - Socket.io for real-time communication between clients.
+🛠 Tech Stack
+Frontend:
+React.js (Vite) – Fast UI rendering.
+Tailwind CSS – Modern & responsive styling.
+Socket.io – Real-time messaging.
+Zustand – Efficient state management.
+Backend:
+Node.js & Express.js – API server.
+MongoDB – Database for storing messages, users, and chats.
+JWT (JSON Web Tokens) – Secure authentication.
+Socket.io – Real-time communication.
+Agora SDK – High-quality voice & video calls.
+Google OAuth – Secure Google authentication.
+Cloud Storage & Other Services:
+Cloudinary – Store and manage images.
+WebRTC (via Agora) – Video calling.
 
-- Cloud Storage:
-  - Cloudinary for storing images.
-
-________________________________________
-
- Installation
-
- Prerequisites
-
-- Node.js (>=14.x)
-- MongoDB (or use MongoDB Atlas for cloud DB)
-- Vite.js for frontend build
-- npm or yarn for managing packages
-
- Clone the repository
-
+--------------------------------------------------------------
+🚀 Getting Started
+1️⃣ Clone the Repository
 ```
-git clone https://github.com/your-username/realtime-chat-app.git
-cd realtime-chat-app
+git clone https://github.com/Manavi-Arora/BuzzChat-MERN.git
+cd BuzzChat-MERN
 ```
-________________________________________
-Backend Setup
-1.	Create a .env file in the server folder and add the following variables: 
-2.	MONGO_URI=<your_mongo_database_url>
-3.	JWT_SECRET=<your_secret_key>
-4.	CLOUDINARY_CLOUD_NAME=<your_cloudinary_cloud_name>
-5.	CLOUDINARY_API_KEY=<your_cloudinary_api_key>
-6.	CLOUDINARY_API_SECRET=<your_cloudinary_api_secret>
-7.	PORT=5000
-8.	NODE_ENV=development
-________________________________________
-Build the Project
-To install all dependencies, build the project, and prepare everything for development or production, simply run:
-```npm run build```
-This will install all the required dependencies for both the frontend and backend, build the project, and set everything up and start frontend.
-________________________________________
-Install and Run the Application
-From the root of the project, run the following command to start the backend:
-```npm run start```
-This command will build and start  the backend servers .
-________________________________________
-Usage
-1.	Sign up: Create a new account by providing your email and password.
-2.	Login: After signing up, log in to your account to access the chat features.
-3.	Start Chatting: Search for users, select a contact, and start chatting!
-4.	Send Images: Click on the image icon in the chat to upload and send images (using Cloudinary).
-5.	Update Profile: Go to the profile settings and upload a new profile picture or update your personal details.
-________________________________________
-Screenshots
-1. Login Screen
-•	Simple login page where users can sign in or sign up.
+2️⃣ Install Dependencies
+```npm install```
+3️⃣ Set Up Environment Variables
+Create a .env file in the server folder and add:
+```
+MONGO_URI=<your_mongo_database_url>
+JWT_SECRET=<your_secret_key>
+CLOUDINARY_CLOUD_NAME=<your_cloudinary_cloud_name>
+CLOUDINARY_API_KEY=<your_cloudinary_api_key>
+CLOUDINARY_API_SECRET=<your_cloudinary_api_secret>
+AGORA_APP_ID=<your_agora_app_id>
+AGORA_APP_CERTIFICATE=<your_agora_app_certificate>
+GOOGLE_CLIENT_ID=<your_google_client_id>
+GOOGLE_CLIENT_SECRET=<your_google_client_secret>
+PORT=5000
+NODE_ENV=development
+```
+4️⃣ Run the Application
+```npm start```
 
-2. Chat Interface
-•	Clean and minimalistic interface with a message list, a typing area, and an option to send images.
- 
-3. Profile Settings
-•	Option to update the profile picture, change username, and update the status.
- 
+--------------------------------------------------------------
+🎥 Live Demo
+🔗 https://realtime-chat-app-czmt.onrender.com
 
-4. Settings Page
-•	Change the theme of the application
- 
-
- Live demo : https://realtime-chat-app-czmt.onrender.com
-
-________________________________________
-Contributing
-We welcome contributions to this project! If you'd like to help improve the Real-Time Chat Application, please follow these steps:
-1.	Fork the repository.
-2.	Create a new branch for your feature.
-3.	Commit your changes.
-4.	Push your changes to your forked repository.
-5.	Create a pull request.
-________________________________________
-
+💬 Start chatting, make video calls, and stay connected – all in real time with BuzzChat! 🚀
