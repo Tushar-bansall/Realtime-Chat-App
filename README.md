@@ -1,7 +1,7 @@
 💬 BuzzChat – Real-Time Chat & Video Calling 🚀
 --------------------------------------------------------------
 
-BuzzChat is a MERN-stack real-time chat platform with one-on-one & group messaging, image sharing, voice & video calls (powered by Agora), Google authentication, friend suggestions and updates, and status updates. Designed for seamless communication, it ensures secure, fast, and interactive conversations.
+ZappChat is a MERN-stack real-time chat platform with one-on-one & group messaging, image sharing, voice & video calls (powered by Agora), Google authentication, friend suggestions and updates, and status updates. Designed for seamless communication, it ensures secure, fast, and interactive conversations.
 
 --------------------------------------------------------------
 
@@ -90,4 +90,4 @@ NODE_ENV=development
 🎥 Live Demo
 🔗 https://realtime-chat-app-czmt.onrender.com
 
-💬 Start chatting, make video calls, and stay connected – all in real time with BuzzChat! 🚀
+💬 Start chatting, make video calls, and stay connected – all in real time with ZappChat! 🚀
