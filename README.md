@@ -88,7 +88,7 @@ AGORA_APP_ID=<your_agora_app_id>
 AGORA_APP_CERTIFICATE=<your_agora_app_certificate>
 GOOGLE_CLIENT_ID=<your_google_client_id>
 GOOGLE_CLIENT_SECRET=<your_google_client_secret>
-PORT=5000
+PORT=8000
 NODE_ENV=development
 ```
 
